@@ -3,20 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>{{left_folder}} | {{right_folder}}</title>
+    <link type="text/css" rel="stylesheet" href="/static/styles/bootstrap.css" >
     <link type="text/css" rel="stylesheet" href="/static/styles/style.css" >
     <script type="text/javascript" src="/static/scripts/angular.js"></script>
     <script type="text/javascript" src="/static/scripts/app.js"></script>
 </head>
 <body>
-<div id="toolbar">TOOLBAR</div>
-<div id="files">
-    <div id="leftView" ng-controller="FilesController">
-        <table>
+<div id="toolbar"></div>
+<div id="files" class="container-fluid" style="padding: 0">
+    <div id="leftView" class="table-responsive panel panel-default col-md-6" style="padding: 0" ng-controller="FilesController">
+        <div class="panel-heading">
+            <div class="input-group">
+                <span class="input-group-addon">C:\</span>
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+        <table class="table table-hover">
             <thead>
                 <tr>
-                    <th>File name</th>
-                    <th>Type</th>
-                    <th>Size</th>
+                    <th class="col-md-8">File name</th>
+                    <th class="col-md-1">Type</th>
+                    <th class="col-md-3">Size</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +35,30 @@
             </tbody>
         </table>
     </div>
-    <div id="rightView"></div>
+    <div id="rightView" class="table-responsive panel panel-default col-md-6" style="padding: 0" ng-controller="FilesController">
+        <div class="panel-heading">
+            <div class="input-group">
+                <span class="input-group-addon">C:\</span>
+                <input type="text" class="form-control" placeholder="">
+            </div>
+        </div>
+        <table class="table table-hover">
+            <thead>
+            <tr class="row">
+                <th class="col-md-8">File name</th>
+                <th class="col-md-1">Type</th>
+                <th class="col-md-3">Size</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="row" ng-repeat="file in files_left">
+                <td>{{file.file_name}}</td>
+                <td>{{file.file_type}}</td>
+                <td>{{file.file_size}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

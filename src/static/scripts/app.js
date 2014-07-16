@@ -4,10 +4,10 @@ app.controller('FilesController', function($scope, $http) {
 
     $scope.files_left = [];
 
-    $scope.loadFiles = function() {
+    $scope.loadFiles = function(path) {
         var httpRequest = $http({
             method: 'POST',
-            url: '/files/list/C:/',
+            url: path,
             data: null
 
         }).success(function(data, status) {
@@ -17,5 +17,5 @@ app.controller('FilesController', function($scope, $http) {
 
     };
 
-    $scope.loadFiles();
+    $scope.loadFiles('/files/list/C:/');
 });
